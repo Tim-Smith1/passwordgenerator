@@ -1,11 +1,47 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+//My character 
+var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+var upperCaseletters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var lowerCaseletters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var specialCharacters = ['!','@','#','$','%','&','*','(',')','-','_','+','='];
+
+function generatePassword () { 
+  var userChoice = prompt ("please select password length between 8 and 128 characters");
+  var numericChar = confirm ("numeric")
+  var upperCase = confirm ("upper");
+  var lowerCase = confirm ("lower case");
+  var specialChar = confirm ("special")
+  
+
+
+  if (userChoice < 8 || userChoice > 128){
+  alert ("password doesn't meet criteria")
+  } else {
+    prompt ("would you like numeric characters?")
+  } 
+  //   return;
+  // if (true){
+  //   confirm ("would you like numeric values")
+  // } else {
+
+  // }
+  
+  
+  
+  // return ("my password");
+
+
+}
+
 // Write password to the #password input
 function writePassword() {
+  //alert("working");
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
+  
+ 
   passwordText.value = password;
 
 }
@@ -14,20 +50,47 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
+////Sam Adams TA pseudocode
+////user clicks a button
+  //event listener, calling a function to write password
+  //inside our function we prompt for password length
+    //var passwordLength = prompt("How many characters would you like your password to contain?"); //what does prompt return??
+      //we need to validate the prompt so that it meets criteria, must be a number, gt 8 lt 129
+    //then user is prompted password length 
 
- 
- /////GIVEN I need a new, secure password
-// WHEN I click the button to generate a password
-// THEN I am presented with a series of prompts for password criteria
-// WHEN prompted for password criteria
-// THEN I select which criteria to include in the password
-// WHEN prompted for the length of the password
-// THEN I choose a length of at least 8 characters and no more than 128 characters
-// WHEN asked for character types to include in the password
-// THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
+    //if(passwordLength < 8){
+      //alert('Password length must be at least 8 characters');
+    //}
+    
+//then user confirms for password criteria
+  //var hasNumeric = confirm("Click OK to confirm including numeric characters.");
+  //var hasLower = confirm("Click OK to confirm including Lower characters.");
+  //var hasUpper = confirm("Click OK to confirm including Upper characters.");
+  //var hasSpecial = confirm("Click OK to confirm including Special characters.");
+
+  //if(hasNumeric === false && hasLower === false && hasUpper === false && hasSpecial === false){
+      //alert('Must select at least one character type');
+  //}
+
+  //object to store user input
+  //var userPassword = {
+      //length: passwordLength,
+      //hasNumeric: hasNumeric,
+      //hasLower: hasLower,
+      //hasUpper: hasUpper,
+      //hasSpecial: hasSpecial,
+  //}
+  // return userPassword;
+
+  //create another function to generate the password
+  //var userOptions = getOptions();
+  //we have an array to store each criteria
+  //var possibleChars = [];
+  //var result = [];
+  //var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  //if(userOptions.hasNumeric === true){
+    //possibleChars = possibleChars.concat(numericCharacters);
+  //}
+  
+//the password is displayed to the screen
+
