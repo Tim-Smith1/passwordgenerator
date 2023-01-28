@@ -1,36 +1,69 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-//My character 
+//My possible characters 
 var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 var upperCaseletters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 var lowerCaseletters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 var specialCharacters = ['!','@','#','$','%','&','*','(',')','-','_','+','='];
 
-function generatePassword () { 
-  var userChoice = prompt ("please select password length between 8 and 128 characters");
-  var numericChar = confirm ("numeric")
-  var upperCase = confirm ("upper");
-  var lowerCase = confirm ("lower case");
-  var specialChar = confirm ("special")
-  
+function generatePassword () {  
+  var badLength = "Please select password length between 8 and 128 characters:";
+  var userChoice = prompt (badLength);
+  var numericChar = confirm ("Would you like a numeric character?");
+  var upperCase = confirm ("Would you like a uppercase character?");
+  var lowerCase = confirm ("How about a lower case letter?");
+  var specialChar = confirm ("And finally a special character?");
+  var possibleChars = [];
+  var result = [];
 
 
-  if (userChoice < 8 || userChoice > 128){
-  alert ("password doesn't meet criteria")
+  if (userChoice === null) {
+      return;
+  } else if (userChoice < 8 || userChoice > 128) {
+      alert(badLength);
+      generatePassword();
+  } else if (!numericChar && !upperCase && !lowerCase && !specialChar){
+      alert ("select atleast one character type!");
+      generatePassword();
   } else {
-    prompt ("would you like numeric characters?")
-  } 
-  //   return;
-  // if (true){
-  //   confirm ("would you like numeric values")
-  // } else {
+  var userPassword = {
+      length: userChoice,
+      hasNumeric: numericChar,
+      hasUpper: upperCase,
+      hasLower: lowerCase,
+      hasSpecial: specialChar
+    }
+console.log(userPassword);
+  }
 
-  // }
+  // adding possibleChars = []; that stores below concatinations.
   
-  
-  
-  // return ("my password");
+  if (userPassword.hasNumeric) {
+    possibleChars = possibleChars.concat(numericCharacters);
+  }
+
+  if (userPassword.hasUpper) {
+    possibleChars = possibleChars.concat(upperCaseletters);
+  }
+
+  if (userPassword.hasLower) {
+    possibleChars = possibleChars.concat(lowerCaseletters);
+  }
+
+  if (userPassword.hasSpecial) {
+    possibleChars = possibleChars.concat(specialCharacters);
+  }
+// userPassword.length determined by  userPassword = {
+//                                    length: userChoice,
+//
+  for (var i = 0; i < userPassword.length; i++) {
+    var randomNumber = Math.floor(Math.random() * possibleChars.length);
+    result [i] = possibleChars[randomNumber]
+  }
+ 
+var newPassword = result.join('');
+return newPassword;
 
 
 }
@@ -40,17 +73,15 @@ function writePassword() {
   //alert("working");
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  
- 
   passwordText.value = password;
-
 }
 
+// console.log(userChoice);
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 
-////Sam Adams TA pseudocode
+////Sam Adams TA pseudocode shared with us via slack.
 ////user clicks a button
   //event listener, calling a function to write password
   //inside our function we prompt for password length
@@ -94,3 +125,12 @@ generateBtn.addEventListener("click", writePassword);
   
 //the password is displayed to the screen
 
+//junkyard: not sure if i'll need this or not.
+
+// function getOptions () {
+//   var userChoice = prompt ("please select password length between 8 and 128 characters");
+//   var numericChar = confirm ("numeric");
+//   var upperCase = confirm ("upper");
+//   var lowerCase = confirm ("lower case");
+//   var specialChar = confirm ("special");
+// } 
