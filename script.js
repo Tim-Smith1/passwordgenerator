@@ -17,12 +17,15 @@ function generatePassword () {
   var possibleChars = [];
   var result = [];
 
-
+//close the pop-up if user changes their mind and cancels 
   if (userChoice === null) {
       return;
+//make sure the user enters a number between 8-128
   } else if (userChoice < 8 || userChoice > 128) {
+//yell at the user if they don't pick a number between 8-128 and rerung the pop-up
       alert(badLength);
       generatePassword();
+//
   } else if (!numericChar && !upperCase && !lowerCase && !specialChar){
       alert ("select atleast one character type!");
       generatePassword();
@@ -61,7 +64,7 @@ console.log(userPassword);
     var randomNumber = Math.floor(Math.random() * possibleChars.length);
     result [i] = possibleChars[randomNumber]
   }
- 
+//result is triggered from the event listner 
 var newPassword = result.join('');
 return newPassword;
 
